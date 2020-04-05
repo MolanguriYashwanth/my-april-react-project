@@ -6,7 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, combineReducers, compose,applyMiddleware } from "redux";
 import { Provider} from "react-redux";
 import thunk from "redux-thunk";
+import createSagaMiddleware from 'redux-saga'
 import RoomsReducer from "./store/reducers/rooms";
+import {watchAddRoom} from './store/sagas/addSaga';
+
+const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers =
   typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
@@ -15,7 +19,7 @@ const composeEnhancers =
     }) : compose;
 
 const enhancer = composeEnhancers(
-  applyMiddleware(thunk),
+  applyMiddleware(thunk,sagaMiddleware),
   // other store enhancers if any
 );
 const reducer = combineReducers({
@@ -26,6 +30,9 @@ const store = createStore(
   reducer,
   enhancer
 );
+
+sagaMiddleware.run(watchAddRoom)
+
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>

@@ -26,7 +26,7 @@ const reducer = (state=initialState,action)=>{
                     ...state,
                     rooms:newRooms
                 }  
-            case "ADD_ROOM_HOUSE":
+            case "ADD_ROOM_HOUSE_ASYNC":
                 return {
                     ...state,
                     rooms:state.rooms.concat({id:Math.random(),value:action.value})
