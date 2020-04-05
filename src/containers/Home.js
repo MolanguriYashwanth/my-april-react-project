@@ -2,6 +2,8 @@ import React, { Fragment, useState ,useEffect} from "react";
 import Rooms from "../components/Rooms";
 import WrapperComponent from "../hoc/WrapperComponent";
 import {useDispatch,useSelector} from "react-redux";
+import AddRoom from "../components/AddRoom";
+
 const Home = (props) => {
     const [roomsAvailable, setRooms] = useState([]);
     const dispatch = useDispatch();
@@ -19,7 +21,8 @@ const Home = (props) => {
     }
     return (
         <Fragment>
-            <Rooms rooms={roomsAvailable} showAllRooms={buttonClicked} />
+            <Rooms rooms={roomsAvailable} showallrooms={buttonClicked} />
+            <AddRoom/>
         </Fragment>
     )
 

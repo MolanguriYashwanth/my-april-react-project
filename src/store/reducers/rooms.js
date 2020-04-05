@@ -20,6 +20,17 @@ const reducer = (state=initialState,action)=>{
                     ...state,
                     rooms:rooms
                 }
+            case "REMOVE_ROOM":
+            let newRooms = state.rooms.filter((each)=>each.id!==action.key);
+                return {
+                    ...state,
+                    rooms:newRooms
+                }  
+            case "ADD_ROOM_HOUSE":
+                return {
+                    ...state,
+                    rooms:state.rooms.concat({id:Math.random(),value:action.value})
+                }      
             default :
             return {
                 ...state
