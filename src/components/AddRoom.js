@@ -11,8 +11,8 @@ const AddRoom = (props) => {
     }
     return (
         <React.Fragment>
-            <input type="text"  onChange={(event)=>{setRoomNameHandler(event)}} value={roomName} />
-            <button onClick={addRoomToStore}>Add Room</button>
+            <input type="text" data-testid="inputtext" onChange={(event)=>{setRoomNameHandler(event)}} value={roomName} />
+            <button data-testid="button" onClick={addRoomToStore}>Add Room</button>
         </React.Fragment>
 
     )
